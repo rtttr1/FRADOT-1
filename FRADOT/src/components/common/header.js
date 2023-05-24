@@ -1,35 +1,38 @@
-import {
-  HeaderDiv,
-  HeaderWrap,
-  Img,
-  Logo,
-  Menu2,
-} from "@/styles/common/header.styles";
+import { useRouter } from "next/router";
+import { HeaderDiv, HeaderWrap, Img, Menu2 } from "@/styles/common/header.styles";
 
 const Header = () => {
-  return (
-    <HeaderWrap>
-      <HeaderDiv>
-        <Logo>
-          <a href="/">
-            {/* <image src={h} width={238} height={59} alt="프라닷" /> */}
-            {/* FRADOT */}
-            <Img></Img>
-          </a>
-        </Logo>
+    const router = useRouter();
 
-        <Menu2>
-          <a href="#">동네찾기</a>
-        </Menu2>
-        <Menu2>
-          <a href="#">인프라 찾기</a>
-        </Menu2>
-        <Menu2>
-          <a href="#">About us</a>
-        </Menu2>
-      </HeaderDiv>
-    </HeaderWrap>
-  );
+    const homeBtn = () => {
+        router.push("/");
+    };
+
+    const mapBtn = () => {
+        router.push("/map1");
+    };
+
+    const aboutBtn = () => {
+        router.push("/aboutUs");
+    };
+
+    return (
+        <HeaderWrap>
+            <HeaderDiv>
+                <Img onClick={homeBtn}></Img>
+
+                <Menu2>
+                    <p onClick={mapBtn}>동네찾기</p>
+                </Menu2>
+                <Menu2>
+                    <p>인프라 찾기</p>
+                </Menu2>
+                <Menu2>
+                    <p onClick={aboutBtn}>About us</p>
+                </Menu2>
+            </HeaderDiv>
+        </HeaderWrap>
+    );
 };
 
 export default Header;

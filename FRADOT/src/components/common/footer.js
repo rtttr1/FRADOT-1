@@ -5,8 +5,6 @@ const Footer = () => {
     return (
         <FooterWrap>
             <Logo2>
-                {/* <image src={h} width={238} height={59} alt="프라닷" /> */}
-                {/* FRADOT */}
                 <Img></Img>
             </Logo2>
             <Line></Line>

@@ -107,9 +107,9 @@ export const Text = styled.div`
 // 설명 랩
 export const ExplainContainer = styled.div``;
 
-export const ExpalinNav = styled.ul`
+export const ExpalinTab = styled.ul`
     list-style: none;
-    z-index: 10;
+    z-index: 100;
     position: sticky;
     width: 100%;
     height: 60px;
@@ -131,7 +131,7 @@ export const ExpalinNav = styled.ul`
     }
 `;
 
-export const NavLabel = styled.a`
+export const Tab = styled.p`
     display: inline-block;
     height: inherit;
     line-height: 60px;
@@ -141,11 +141,13 @@ export const NavLabel = styled.a`
     font-weight: 500;
     cursor: pointer;
     border-bottom: ${(props) => props.current && "3px solid #756bff"};
+    /* opacity: ${(props) => props.current || "20%"}; */
 `;
 
 export const ExplainWrap = styled.div`
     background-color: ${(props) => (props.part === "town" ? "#f8f8ff" : "#F0F8FF")};
     padding: 50px 0;
+    scroll-margin-top: 160px;
 `;
 
 export const ContentWrap = styled.div`
