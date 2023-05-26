@@ -13,7 +13,7 @@ const Header = () => {
     };
 
     const aboutBtn = () => {
-        router.push("/aboutUs");
+        router.push("/AboutUs");
     };
 
     return (

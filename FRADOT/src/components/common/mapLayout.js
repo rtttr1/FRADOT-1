@@ -1,6 +1,6 @@
 import Header from "./mapHeader";
 
-const LayOut = (props) => {
+const MapLayOut = (props) => {
   return (
     <>
       <Header></Header>
@@ -9,4 +9,4 @@ const LayOut = (props) => {
   );
 };
 
-export default LayOut;
+export default MapLayOut;

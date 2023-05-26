@@ -4,7 +4,7 @@ import { Spin } from "antd";
 import { IoMdCloseCircle } from "react-icons/io";
 import { CgMenuRound } from "react-icons/cg";
 import { useEffect, useState, useRef } from "react";
-import Layout from "../../components/common/mapLayout";
+import MapLayOut from "../../components/common/mapLayout";
 import { CustomOverlayMap, Map, Polygon } from "react-kakao-maps-sdk";
 import {
   CateTitle,
@@ -182,6 +182,7 @@ const map = () => {
         console.log(err);
       });
   }, []);
+  
 
   // json 파일 데이터들의
   // 폴리곤좌표(positions), 동이름(dongName), isMouseover를 객체 형태로 dongInfo 배열에 저장
@@ -298,6 +299,7 @@ const map = () => {
       // 버튼 배경색, 글자색 변경
       typeBtn[type].current.style.backgroundColor = "#756bff";
       typeBtn[type].current.style.color = "white";
+      typeBtn[type].current.style.boxShadow = "rgba(165, 165, 165, 0.09) 1px 2px 0px 1px, rgb(26 26 26 / 19%) 2px 3px 0px 0px inset";
 
       // cnt +1 해주기
       btn[type][3].current++;
@@ -380,7 +382,7 @@ const map = () => {
   // 사이드바 닫아주는 함수
   const sideBarClose = () => {
     menuBtn.current.style.transitionDelay = "1000ms";
-    sideBar.current.style.transform = "translateX(-270px)";
+    sideBar.current.style.transform = "translateX(-350px)";
     menuBtn.current.style.visibility = "visible";
   };
 
@@ -402,183 +404,193 @@ const map = () => {
       e.target.style.color = "black";
     }
   };
+
+
   return (
-    <Layout>
-      <MapWrap>
-        <SideWrap>
-          <MenuBtn ref={menuBtn} onClick={sideBarOpen}>
-            <CgMenuRound size="30" color="red" />
-          </MenuBtn>
-          <SideBar ref={sideBar}>
-            <CloseBtn onClick={sideBarClose}>
-              <IoMdCloseCircle size="20" />
-            </CloseBtn>
-            <Category>
-              <CateTitle>문화시설</CateTitle>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, libClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, libClickCnt.current)}
-                ref={libBtn}
-                onClick={() => infraBtnClick(libClickCnt.current, "library")}
-              >
-                도서관
-              </Infra>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, parkClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, parkClickCnt.current)}
-                ref={parkBtn}
-                onClick={() => infraBtnClick(parkClickCnt.current, "park")}
-              >
-                공원
-              </Infra>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, marClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, marClickCnt.current)}
-                ref={marBtn}
-                onClick={() => infraBtnClick(marClickCnt.current, "market")}
-              >
-                전통시장
-              </Infra>
-            </Category>
-            <Category>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, kidsClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, kidsClickCnt.current)}
-                ref={kidsBtn}
-                onClick={() => infraBtnClick(kidsClickCnt.current, "kids")}
-              >
-                키즈카페
-              </Infra>
-            </Category>
-            <Category>
-              <CateTitle>의료시설</CateTitle>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, hosClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, hosClickCnt.current)}
-                ref={hosBtn}
-                onClick={() => infraBtnClick(hosClickCnt.current, "hospital")}
-              >
-                응급실
-              </Infra>
-            </Category>
-            <Category>
-              <CateTitle>체육시설</CateTitle>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, gymClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, gymClickCnt.current)}
-                ref={gymBtn}
-                onClick={() => infraBtnClick(gymClickCnt.current, "gym")}
-              >
-                체육관
-              </Infra>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, swimClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, swimClickCnt.current)}
-                ref={swimBtn}
-                onClick={() => infraBtnClick(swimClickCnt.current, "swim")}
-              >
-                수영장
-              </Infra>
-            </Category>
-            <Category>
-              <CateTitle>복지시설</CateTitle>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, rehClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, rehClickCnt.current)}
-                ref={rehBtn}
-                onClick={() => infraBtnClick(rehClickCnt.current, "reh")}
-              >
-                재활센터
-              </Infra>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, oldClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, oldClickCnt.current)}
-                ref={oldBtn}
-                onClick={() => infraBtnClick(oldClickCnt.current, "old")}
-              >
-                노인복지관
-              </Infra>
-            </Category>
-            <Category>
-              <CateTitle>교육시설</CateTitle>
-              <Infra
-                onMouseOver={(e) => handleMouseOver(e, colClickCnt.current)}
-                onMouseOut={(e) => handleMouseOut(e, colClickCnt.current)}
-                ref={colBtn}
-                onClick={() => infraBtnClick(colClickCnt.current, "college")}
-              >
-                대학교
-              </Infra>
-            </Category>
+    <MapLayOut>
+      <Container>
+        <MapWrap>
+          <SideWrap>
+            <MenuBtn ref={menuBtn} onClick={sideBarOpen}>
+              <CgMenuRound size="30" color="#004c80" />
+            </MenuBtn>
 
-            <Search onClick={click2}>검색</Search>
-          </SideBar>
-        </SideWrap>
+            <SideBar ref={sideBar}>
+              <CloseBtn onClick={sideBarClose}>
+                <IoMdCloseCircle size="20" />
+              </CloseBtn>
 
-        <Map
-          id={`map`}
-          center={{
-            lat: 37.566826,
-            lng: 126.9786567,
-          }}
-          style={{
-            width: "100%",
-            height: "100vh",
-            position: "absolute",
-          }}
-          level={9}
-          onCreate={setMap}
-          onMouseMove={(_map, mouseEvent) =>
-            setMousePosition({
-              lat: mouseEvent.latLng.getLat(),
-              lng: mouseEvent.latLng.getLng(),
-            })
-          }
-        >
-          {dongInfo.map((info, idx) => (
-            <Polygon
-              key={idx}
-              path={info.positions} // 그려질 다각형의 좌표 배열
-              strokeWeight={2} // 선의 두께
-              strokeColor={"#004c80"} // 선의 색깔
-              strokeOpacity={0.8} // 선의 불투명도, 1에서 0 사이의 값이며 0에 가까울수록 투명
-              strokeStyle={"solid"} // 선의 스타일
-              fillColor={info.isMouseover ? "#09f" : "#fff"} // 채우기 색깔
-              fillOpacity={0.7} // 채우기 불투명도
-              onMouseover={() => (info.isMouseover = true)}
-              onMouseout={() => (info.isMouseover = false)}
-            />
-          ))}
+              <Category>
+                <CateTitle>문화시설</CateTitle>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, libClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, libClickCnt.current)}
+                  ref={libBtn}
+                  onClick={() => infraBtnClick(libClickCnt.current, "library")}
+                >
+                  도서관
+                </Infra>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, parkClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, parkClickCnt.current)}
+                  ref={parkBtn}
+                  onClick={() => infraBtnClick(parkClickCnt.current, "park")}
+                >
+                  공원
+                </Infra>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, marClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, marClickCnt.current)}
+                  ref={marBtn}
+                  onClick={() => infraBtnClick(marClickCnt.current, "market")}
+                >
+                  전통시장
+                </Infra>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, kidsClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, kidsClickCnt.current)}
+                  ref={kidsBtn}
+                  onClick={() => infraBtnClick(kidsClickCnt.current, "kids")}
+                >
+                  키즈카페
+                </Infra>
+              </Category>
 
-          {dongInfo.findIndex((v) => v.isMouseover) !== -1 && (
-            <CustomOverlayMap position={mousePosition}>
-              <DivArea>{dongInfo.find((v) => v.isMouseover).dongName}</DivArea>
-            </CustomOverlayMap>
-          )}
+              <Category>
+                <CateTitle>의료시설</CateTitle>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, hosClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, hosClickCnt.current)}
+                  ref={hosBtn}
+                  onClick={() => infraBtnClick(hosClickCnt.current, "hospital")}
+                >
+                  응급실
+                </Infra>
+              </Category>
 
-          {selectedDong.map((path, idx) => (
-            <Polygon
-              key={idx}
-              path={path.positions}
-              strokeWeight={2}
-              strokeColor={"red"}
-              strokeOpacity={0.8}
-              strokeStyle={"solid"}
-              fillColor={path.isMouseover ? "pink" : "#ffe6ea"}
-              fillOpacity={0.7}
-              onMouseover={() => (path.isMouseover = true)}
-              onMouseout={() => (path.isMouseover = false)}
-            />
-          ))}
-        </Map>
-      </MapWrap>
+              <Category>
+                <CateTitle>체육시설</CateTitle>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, gymClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, gymClickCnt.current)}
+                  ref={gymBtn}
+                  onClick={() => infraBtnClick(gymClickCnt.current, "gym")}
+                >
+                  체육관
+                </Infra>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, swimClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, swimClickCnt.current)}
+                  ref={swimBtn}
+                  onClick={() => infraBtnClick(swimClickCnt.current, "swim")}
+                >
+                  수영장
+                </Infra>
+              </Category>
 
-      <WaitBox ref={waitBox}>
-        <Spin tip="Loading">
-          <div />
-        </Spin>
-      </WaitBox>
-    </Layout>
+              <Category>
+                <CateTitle>복지시설</CateTitle>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, rehClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, rehClickCnt.current)}
+                  ref={rehBtn}
+                  onClick={() => infraBtnClick(rehClickCnt.current, "reh")}
+                >
+                  재활센터
+                </Infra>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, oldClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, oldClickCnt.current)}
+                  ref={oldBtn}
+                  onClick={() => infraBtnClick(oldClickCnt.current, "old")}
+                >
+                  노인복지관
+                </Infra>
+              </Category>
+
+              <Category>
+                <CateTitle>교육시설</CateTitle>
+                <Infra
+                  onMouseOver={(e) => handleMouseOver(e, colClickCnt.current)}
+                  onMouseOut={(e) => handleMouseOut(e, colClickCnt.current)}
+                  ref={colBtn}
+                  onClick={() => infraBtnClick(colClickCnt.current, "college")}
+                >
+                  대학교
+                </Infra>
+              </Category>
+
+              <Search onClick={click2}>검색</Search>
+            </SideBar>
+          </SideWrap>
+          <Map
+            id={`map`}
+            center={{
+              lat: 37.566826,
+              lng: 126.9786567,
+            }}
+            style={{
+              width: "100%",
+              height: "calc(100vh - 30px)",
+              position: "absolute",
+            }}
+            level={9}
+            maxLevel={9}
+            onCreate={setMap}
+            onMouseMove={(_map, mouseEvent) =>
+              setMousePosition({
+                lat: mouseEvent.latLng.getLat(),
+                lng: mouseEvent.latLng.getLng(),
+              })
+            }
+          >
+            {dongInfo.map((info, idx) => (
+              <Polygon
+                key={idx}
+                path={info.positions} // 그려질 다각형의 좌표 배열
+                strokeWeight={2} // 선의 두께
+                strokeColor={"#004c80"} // 선의 색깔
+                strokeOpacity={0.8} // 선의 불투명도, 1에서 0 사이의 값이며 0에 가까울수록 투명
+                strokeStyle={"solid"} // 선의 스타일
+                fillColor={info.isMouseover ? "#09f" : "#fff"} // 채우기 색깔
+                fillOpacity={0.7} // 채우기 불투명도
+                onMouseover={() => (info.isMouseover = true)}
+                onMouseout={() => (info.isMouseover = false)}
+              />
+            ))}
+
+            {dongInfo.findIndex((v) => v.isMouseover) !== -1 && (
+              <CustomOverlayMap position={mousePosition}>
+                <DivArea>
+                  {dongInfo.find((v) => v.isMouseover).dongName}
+                </DivArea>
+              </CustomOverlayMap>
+            )}
+
+            {selectedDong.map((path, idx) => (
+              <Polygon
+                key={idx}
+                path={path.positions}
+                strokeWeight={2}
+                strokeColor={"red"}
+                strokeOpacity={0.8}
+                strokeStyle={"solid"}
+                fillColor={path.isMouseover ? "pink" : "#ffe6ea"}
+                fillOpacity={0.7}
+                onMouseover={() => (path.isMouseover = true)}
+                onMouseout={() => (path.isMouseover = false)}
+              />
+            ))}
+          </Map>
+        </MapWrap>
+
+        <WaitBox ref={waitBox}>
+          <Spin tip="Loading">
+            <div />
+          </Spin>
+        </WaitBox>
+      </Container>
+    </MapLayOut>
   );
 };
 

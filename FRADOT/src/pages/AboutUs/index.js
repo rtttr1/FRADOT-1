@@ -148,29 +148,29 @@ const AboutUs = () => {
                             <Title>COLOR</Title>
                             <SubTitle>Main Color</SubTitle>
                             <ColorContainer>
-                                <ColorContent>
-                                    <MyColor divColor="red"></MyColor>
-                                    <Ptag>#000000</Ptag>
+                            <ColorContent>
+                                    <MyColor divColor="#756BFF"></MyColor>
+                                    <Ptag>#756BFF</Ptag>
                                 </ColorContent>
                                 <ColorContent>
-                                    <MyColor divColor="orange"></MyColor>
-                                    <Ptag>#000000</Ptag>
+                                    <MyColor divColor="#333333"></MyColor>
+                                    <Ptag>#333333</Ptag>
                                 </ColorContent>
                             </ColorContainer>
 
                             <SubTitle>Sub Color</SubTitle>
                             <ColorContainer>
                                 <ColorContent>
-                                    <MyColor divColor="red"></MyColor>
-                                    <Ptag>#000000</Ptag>
+                                    <MyColor divColor="#F8F8FF"></MyColor>
+                                    <Ptag>#F8F8FF</Ptag>
                                 </ColorContent>
                                 <ColorContent>
-                                    <MyColor divColor="green"></MyColor>
-                                    <Ptag>#000000</Ptag>
+                                    <MyColor divColor="#F0F8FF"></MyColor>
+                                    <Ptag>#F0F8FF</Ptag>
                                 </ColorContent>
                                 <ColorContent>
-                                    <MyColor divColor="blue"></MyColor>
-                                    <Ptag>#000000</Ptag>
+                                    <MyColor divColor="#306D95"></MyColor>
+                                    <Ptag>#306D95</Ptag>
                                 </ColorContent>
                             </ColorContainer>
                         </Color>
