@@ -18,8 +18,11 @@ import {
     Wave,
 } from "@/styles/main.styles";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const MainPage = () => {
+    const router = useRouter();
+
     const tabPart = useRef([]); // 탭 클릭 시 이동하려는 컴포넌트 의 배열
     const tab = ["동네찾기 알아보기", "인프라찾기 알아보기"]; // 탭 이름 배열
     const [currentTabPart, setCurrentTabPart] = useState(false); // 선택된 탭 아래에 스타일 적용하기 위해 current props의 조건으로 사용할 state 변수
@@ -53,6 +56,14 @@ const MainPage = () => {
 
         return () => tabObserver.disconnect();
     }, []);
+
+    const mapBtn1 = () => {
+        router.push("/map1");
+    };
+
+    const mapBtn2 = () => {
+        // router.push("/map2");
+    };
 
     return (
         <LayOut>
@@ -134,7 +145,9 @@ const MainPage = () => {
                             </ExplainItem>
                         </ExplainItemWrap>
 
-                        <ShortCutBtn part="town">바로가기</ShortCutBtn>
+                        <ShortCutBtn part="town" onClick={mapBtn1}>
+                            바로가기
+                        </ShortCutBtn>
                     </ContentWrap>
                 </ExplainWrap>
 
@@ -167,7 +180,9 @@ const MainPage = () => {
                             </ExplainItem>
                         </ExplainItemWrap>
 
-                        <ShortCutBtn part="infra">바로가기</ShortCutBtn>
+                        <ShortCutBtn part="infra" onClick={mapBtn2}>
+                            바로가기
+                        </ShortCutBtn>
                     </ContentWrap>
                 </ExplainWrap>
             </ExplainContainer>
